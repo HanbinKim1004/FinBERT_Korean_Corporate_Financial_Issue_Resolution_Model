@@ -71,7 +71,7 @@ def crawler(search_company, headers={"User-Agent": "Mozilla/5.0 (Macintosh; Inte
             result_df = pd.concat([result_df,df])
 
             if len(result_df) % 100 == 0 :
-                print(f'{len(result_df)} data is done!')
+                print(f'======== {len(result_df)} data is done! ======== ')
                 if len(result_df) % 500 == 0 :
                     result_df.to_csv(f'news_{len(result_df)}_{search_company}.csv', encoding='utf-8-sig',index=False)
 
@@ -90,7 +90,7 @@ def preprocess(df, company ,output_dir) :
     df['text'] =df['text'].apply(remove_symbol)
     df['text'] =df['text'].apply(remove_blank)
 
-    df = df[['date','text']]
+    #df = df[['date','text']]
     df.to_csv(f'{output_dir}/news_{company}.csv', encoding='utf-8-sig',index=False)
     print(f'{output_dir}/news_{company}.csv saved!')
     return None
