@@ -28,6 +28,7 @@ def crawler(search_company, headers={"User-Agent": "Mozilla/5.0 (Macintosh; Inte
 
 
     while True : 
+
         # sort = 0  : 관련도순
         # p = 1y : 1년 
         # &de=2022.12.11&ds=2021.12.11 : 기간
@@ -59,21 +60,23 @@ def crawler(search_company, headers={"User-Agent": "Mozilla/5.0 (Macintosh; Inte
             news = requests.get(url,headers=headers)
             html = BeautifulSoup(news.text,"html.parser")
 
-            # only econ paper
-            company,date,title,content  = get_company(html),get_date(html) , get_title(html), get_content(html)
-            result = [ re.sub(pattern='<[^>]*>', repl='', string=''.join(str(i))) for i in [date,company,title,content] ]
-
-            # use content and title sperately 
-            #df = pd.DataFrame({'date':[result[0]],'company':[result[1]],'title':[result[2]],'content':[result[3]]}) 
-            
             # use description and title as text source
+            company,date,title,content = get_company(html),get_date(html) , get_title(html), get_content(html)
+            result = [ re.sub(pattern='<[^>]*>', repl='', string=''.join(str(i))) for i in [date,company,title,content] ]
             df = pd.DataFrame({'date':result[0],'company':result[1],'text':[result[2],result[3]] }) 
+            
+            # use only title 
+            # company,date,title = get_company(html),get_date(html) , get_title(html)
+            # result = [ re.sub(pattern='<[^>]*>', repl='', string=''.join(str(i))) for i in [date,company,title] ]
+            # df = pd.DataFrame({'date':[result[0]],'company':[result[1]],'text':[result[2]] }) 
+            
             result_df = pd.concat([result_df,df])
 
             if len(result_df) % 100 == 0 :
-                print(f'======== {len(result_df)} data is done! ======== ')
-                if len(result_df) % 500 == 0 :
-                    result_df.to_csv(f'news_{len(result_df)}_{search_company}.csv', encoding='utf-8-sig',index=False)
+                print(f'{len(result_df)} data is done!')
+                if len(result_df) % 1000 == 0 :
+                    preprocess(result_df, company ,'./archive')
+                    #result_df.to_csv(f'news_{len(result_df)}_{search_company}.csv', encoding='utf-8-sig',index=False)
 
         page_num +=10
 

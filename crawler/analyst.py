@@ -50,7 +50,7 @@ def preprocess(df,company,output_dir) :
     df['text'] = df.apply(lambda i : remove_long_number(i['text'],i['pos_tagged']),axis=1)
 
     # delete unnecessary long data
-    df['text'] = df['text'].apply( lambda i : i if len(i) <2000 else '')
+    df['text'] = df['text'].apply( lambda i : i if len(i) < 2000 else '')
 
     # drop blank data
     df = df[ (df['text']!= '' )  ]
