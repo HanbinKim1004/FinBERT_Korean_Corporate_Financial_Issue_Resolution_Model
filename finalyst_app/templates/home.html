@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+<section class="main-section">
+    <span class="v49_236">애널리스트를 위한 <br>오피니언 분석 플랫폼</span>
+
+    <div class="searchbar-wrap">
+        <form action="{%url 'home'%}" method="POST">
+            {%csrf_token%}
+            <input class="search-input" name="keyword" id="keyword" type="text" placeholder="기업명을 입력해주세요." style="background-color:transparent;" autocomplete="off"/>
+        </form>
+        <i class="fas fa-search"></i>
+    </div> 
+
+    <div class="right_chart">
+      <div class="v49_239">
+        <span class="v49_240">12월 정식 런칭</span>
+        <div class="v49_241">
+          <div class="v49_242">
+            <div class="v49_243"></div>
+            <span class="v49_244">1</span>
+          </div>
+          <span class="v49_245">제휴 기업 12월 데이터 업데이트</span>
+        </div>
+        <div class="v49_246">
+          <div class="v49_247">
+            <div class="v49_248"></div>
+            <span class="v49_249">2</span>
+          </div>
+          <span class="v49_250">제휴 기업 12월 데이터 업데이트</span>
+        </div>
+        <div class="v49_251">
+          <div class="v49_252">
+            <div class="v49_253"></div>
+            <span class="v49_254">3</span>
+          </div>
+          <span class="v49_255">제휴 기업 12월 데이터 업데이트</span>
+        </div>
+      </div>
+    </div>
+      
+    <div class="v119_52">
+      <span class="v119_50">관심 가는 기업의 모든 최근 이슈를 한눈에 조회하고 이슈별로 애널리스트들이 어떻게 생각하는지 확인해보세요. <br>이제껏 경험 못 했던 쉽고 편리한 분석 서비스,<br> Finalyst와 함께라면 당신의 금융이 새로워질 거예요.</span>
+    </div>
+    <div class="v110_2980">
+      <div class="v110_2981"></div>
+      <div class="v110_2982"></div>
+      <div class="v110_2985"></div>
+      <div class="v110_2986"></div>
+      <div class="v110_2987"></div>
+      <span class="v110_3001">데이터룸</span>
+      <span class="v110_3002">가이드</span>
+      <span class="v110_3003">분석리포트</span>
+      <span class="v110_3004">스타트업혜택</span>
+      <span class="v110_3005">공지사항</span>
+      <span class="v110_3006">자주묻는질문</span>
+      <span class="v110_3007">이용약관</span>
+      <span class="v110_3008">개인정보처리방침</span>
+      <span class="v110_3009">주식회사 파이널리스트</span>
+      <span class="v110_3010">대표자 :</span>
+      <span class="v110_3011">Finalyst</span>
+      <span class="v110_3012">개인정보관리책임자 :</span>
+      <span class="v110_3013">Finalyst</span>
+      <span class="v110_3014">사업자등록번호 :</span>
+      <span class="v110_3015">772-88-01489</span>
+      <span class="v110_3016">서울특별시 서대문구 연세로 50</span>
+      <span class="v110_3017">이메일 :</span>
+      <span class="v110_3018">support@innoforest.co.kr</span>
+      <span class="v110_3019">혁신의숲의 모든 콘텐츠는 저작권법의 보호를 받는 바, 당사와의 협의없이 무단 전재, 복사, 배포 시 민형사상 책임을 물을 수 있습니다.</span>
+      <span class="v110_3020">Copyright © Mark&Company all rights reserved</span>
+      <span class="v110_3021">구독하기</span>
+      <span class="v110_3022">지난 뉴스레터 살펴보기</span>
+      <div class="v110_3023"></div>
+    </div>
+</section>
+
+
+
+{% endblock %}

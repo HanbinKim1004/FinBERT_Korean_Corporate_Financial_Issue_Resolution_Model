@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalyst</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <script src="https://kit.fontawesome.com/337a175665.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- 상단 navbar -->
+    <nav class="navbar">
+        <div class="navbar__logo">
+          <a href="{% url 'home' %}"><img src="{% static 'images/v60_353.png' %}" style="width:100px; padding-top: 8px;"></a>
+        </div>
+
+        <div class="navbar_search">
+            <div class="searchbar-wrap">
+                <form action="{%url 'home'%}" method="POST">
+                    {%csrf_token%}
+                    <input class="search-input" name="keyword" id="keyword" type="text" placeholder= "검색어를 입력해주세요." style="background-color:transparent;" autocomplete="off"/>
+                </form>
+                <i class="fas fa-search"></i>
+            </div> 
+        </div>
+  
+        <ul class="navbar__menu">
+          <li><a href="#">스타트업혜택</a></li>
+          <li><a href="#">보도자료</a></li>
+          <li><a href="#">분석리포트</a></li>
+          <li><a href="#">업데이트</a></li>
+          <li><a href="#">데이터룸</a></li>
+        </ul>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
